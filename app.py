@@ -1,28 +1,52 @@
-print ("Programa Expresso")
-print ("*****************")
-print ("1-cadastrar restaurante")
-print ("2-lista restaurante")
-print ("3-ativas restaurrante")
-print ("4-sair")
+import os
 
+restaurantes = []
 
-opcaodigitada = int(input("Digite a opção desejada: "))
+def finalizar_app():
+    os.system("clear")
+    print("Finalizando o app\n")
 
-if(opcaodigitada == 1):
+def escolher_opcoes():
+    print("Programa Expresso")
+    print("*****************")
+    print("1 - Cadastrar restaurante")
+    print("2 - Listar restaurante")
+    print("3 - Ativar restaurante")
+    print("4 - Sair\n")
 
-    print ("voce escolheu cadastrar restaurante")
+def opcao_invalida():
+    print("Opção inválida\n")
+    input("Digite uma tecla para voltar ao menu principal: ")
+    main()
 
-elif (opcaodigitada == 2):
+def chamar_nome_do_app():
+    print("Restaurante Expressao\n")
 
-    print ("Você escolheu listar restaurante")
+def cadastrar_novo_restaurante():
+    nome = input("Digite o nome do novo restaurante: ")
+    restaurantes.append(nome)
+    print(f"Você cadastrou o restaurante: {nome}")
 
-elif (opcaodigitada == 3):
+def main():
+    escolher_opcoes()
+    chamar_nome_do_app()
+    try:
+        opcaodigitada = int(input("Digite a opção desejada: "))
+        if opcaodigitada == 1:
+            print("Você escolheu cadastrar restaurante\n")
+            cadastrar_novo_restaurante()
+        elif opcaodigitada == 2:
+            print("Você escolheu listar restaurante\n")
+        elif opcaodigitada == 3:
+            print("Você escolheu ativar restaurante\n")
+        elif opcaodigitada == 4:
+            print("Você escolheu sair do aplicativo\n")
+            finalizar_app()
+        else:
+            opcao_invalida()
+    except ValueError:
+        opcao_invalida()
 
-    print ("Você escolheu ativar restaurante")
-
-elif (opcaodigitada == 4):
-
-    print("Você escolheu sair do aplicativo")
-
-else:
-    print ("Essa opçãonão existe escolhaas opções existentes")
+if __name__ == "__main__":
+    finalizar_app()
+    main()
